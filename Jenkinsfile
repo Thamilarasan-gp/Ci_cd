@@ -3,10 +3,9 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
+        stage('Build') {
             steps {
-                git branch: 'main',
-                url: 'https://github.com/Thamilarasan-gp/Ci_cd.git'
+                bat 'echo Building Website...'
             }
         }
 
@@ -14,7 +13,7 @@ pipeline {
             steps {
                 bat '''
                 if exist index.html (
-                    echo Website Found
+                    echo Test Passed
                 ) else (
                     exit 1
                 )
