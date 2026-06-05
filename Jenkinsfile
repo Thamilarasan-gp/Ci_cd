@@ -16,6 +16,16 @@ pipeline {
             }
         }
 
+        stage('Merge To Production') {
+            steps {
+                bat '''
+                git checkout production
+                git merge main
+                git push origin production
+                '''
+            }
+        }
+
         stage('Deploy') {
             steps {
                 bat '''
